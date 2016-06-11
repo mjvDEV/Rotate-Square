@@ -40,11 +40,11 @@ void printGrid(int** g, int n)
 
 ////////////////////////////////////////////////////////////////////
 // Algorithm initGrid(g, n)
-//		Initializes a dynamic character grid to '*'
+//		Initializes a dynamic character grid to random digits.
 //
 // Pre: g :: refToRefToChar, contains valid references in x and y directions.
 //		n :: integer, the dimensions of the desired square array.
-// Post: sets all values in g to '*'
+// Post: sets all values in g to random digits (0-9).
 // Return: nothing
 ////////////////////////////////////////////////////////////////////
 
