@@ -17,7 +17,7 @@ using namespace std;
 
 ////////////////////////////////////////////////////////////////////
 // Algorithm printGrid(g, n)
-//		Prints a dyanamic grid to the console.
+//	Prints a dyanamic grid to the console.
 //
 // Pre: g :: refToRefToChar, contains valid references in x and y directions.
 //		n :: integer, the dimensions of the desired square array.
@@ -40,7 +40,7 @@ void printGrid(int** g, int n)
 
 ////////////////////////////////////////////////////////////////////
 // Algorithm initGrid(g, n)
-//		Initializes a dynamic character grid to random digits.
+//	Initializes a dynamic character grid to random digits.
 //
 // Pre: g :: refToRefToChar, contains valid references in x and y directions.
 //		n :: integer, the dimensions of the desired square array.
@@ -50,6 +50,7 @@ void printGrid(int** g, int n)
 
 void initGrid(int** g, int n)
 {
+	srand(time(NULL));
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < n; j++)
@@ -61,7 +62,7 @@ void initGrid(int** g, int n)
 
 ////////////////////////////////////////////////////////////////////
 // Algorithm makeGrid(n)
-//		Allocates a 2D character array on the heap.
+//	Allocates a 2D character array on the heap.
 //
 // Pre: n :: integer, the dimensions of the desired square array.
 // Post: Allocates memory for the 2D array.
@@ -80,7 +81,7 @@ int** makeGrid(int n)
 
 ////////////////////////////////////////////////////////////////////
 // Algorithm destroyGrid(g, n)
-//		Deallocates a dynamic 2D array from the heap.
+//	Deallocates a dynamic 2D array from the heap.
 //
 // Pre: g :: refToRefToChar, contains valid references in x and y directions.
 //		n :: integer, the dimensions of the desired square array.
@@ -98,17 +99,17 @@ void destroyGrid(int** g, int n)
 }
 
 ////////////////////////////////////////////////////////////////////
-// Algorithm rotateSquare(large, N, dir)
-//		rotates any N size dynamic square large in direction dir once.
+// Algorithm rotateSquare(square, N, dir)
+//		rotates any N size dynamic square in direction dir once.
 //
-// Pre: large :: refToRefTo int, contains valid references.
-//		N :: integer, the dimensions of square formed by large.
+// Pre: square :: refToRefTo int, contains valid references.
+//		N :: integer, the dimensions of square formed by square.
 //		dir :: bool, true for clockwise, false for counterclockwise.
-// Post: Rotates large in desired direction.
+// Post: Rotates square in desired direction.
 // Return: nothing
 ////////////////////////////////////////////////////////////////////
 
-void rotateSquare(int** large, int N, bool dir)
+void rotateSquare(int** square, int N, bool dir)
 {
 	int temp;
 
@@ -118,11 +119,11 @@ void rotateSquare(int** large, int N, bool dir)
 		{
 			for (int a = 1; a < (N - (b * 2)); a++)
 			{
-				temp = large[N - a - b][b];
-				large[N - a - b][b] = large[N - 1 - b][N - a - b];
-				large[N - 1 - b][N - a - b] = large[b + a - 1][N - 1 - b];
-				large[b + a - 1][N - 1 - b] = large[b][b + a - 1];
-				large[b][b + a - 1] = temp;
+				temp = square[N - a - b][b];
+				square[N - a - b][b] = square[N - 1 - b][N - a - b];
+				square[N - 1 - b][N - a - b] = square[b + a - 1][N - 1 - b];
+				square[b + a - 1][N - 1 - b] = square[b][b + a - 1];
+				square[b][b + a - 1] = temp;
 			}
 		}
 	}
@@ -132,11 +133,11 @@ void rotateSquare(int** large, int N, bool dir)
 		{
 			for (int a = 1; a < (N - (b * 2)); a++)
 			{
-				temp = large[b][b + a - 1];
-				large[b][b + a - 1] = large[b + a - 1][N - 1 - b];
-				large[b + a - 1][N - 1 - b] = large[N - 1 - b][N - a - b];
-				large[N - 1 - b][N - a - b] = large[N - a - b][b];
-				large[N - a - b][b] = temp;
+				temp = square[b][b + a - 1];
+				square[b][b + a - 1] = square[b + a - 1][N - 1 - b];
+				square[b + a - 1][N - 1 - b] = square[N - 1 - b][N - a - b];
+				square[N - 1 - b][N - a - b] = square[N - a - b][b];
+				square[N - a - b][b] = temp;
 			}
 		}
 	}
@@ -153,7 +154,6 @@ void rotateSquare(int** large, int N, bool dir)
 
 int main(void)
 {
-	srand(time(NULL));
 	int N;
 	int** square;
 	char test = 'y', dir;
