@@ -6,7 +6,6 @@
 //			- Print to console
 //			- Initialize with random values
 //			- Rotate
-// *NOTE: outside of MVS, remove line: #include "stdafx.h"
 ////////////////////////////////////////////////////////////////////
 
 #include <iostream>
